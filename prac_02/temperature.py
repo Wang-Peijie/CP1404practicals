@@ -11,10 +11,10 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "C":
-            fahrenheit = covert_celsius_to_fahrenheit()
+            fahrenheit = convert_celsius_to_fahrenheit()
             print(f"Result: {fahrenheit:.2f} F")
         elif choice == "F":
-            celsius = covert_fahrenheit_celsius()
+            celsius = convert_fahrenheit_celsius()
             print(f"Result: {celsius:.2f} C")
         else:
             print("Invalid option")
