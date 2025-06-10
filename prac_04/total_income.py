@@ -17,14 +17,14 @@ def main():
 
 
 def get_monthly_income(incomes, number_of_month):
-    '''use number of month to store monthly income in incomes'''
+    """use number of month to store monthly income in incomes"""
     for month in range(1, number_of_month + 1):
         income = float(input(f"Enter income for month {str(month)}:"))
         incomes.append(income)
 
 
 def print_report(incomes, number_of_month):
-    '''print report by incomes and number of month'''
+    """print report by incomes and number of month"""
     total = 0
     for month in range(1, number_of_month + 1):
         income = incomes[month - 1]
