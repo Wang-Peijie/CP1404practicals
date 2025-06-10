@@ -18,3 +18,5 @@ for i in range(number_of_picks):
             one_round_result.append(random.randint(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER))
     one_round_result.sort()
     total_result.append(one_round_result)
+for picks in total_result:
+    print("{:2} {:2} {:2} {:2} {:2} {:2}".format(*picks))
