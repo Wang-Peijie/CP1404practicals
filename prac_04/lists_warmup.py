@@ -5,5 +5,7 @@ numbers = ["ten", 1, 4, 1, 5, 9, 1]
 #Print all the elements from numbers except the first two (slice)
 for number in numbers[3:]:
     print(number,end=" ")
+#or
+print(",".join([str(n) for n in numbers[3:]]))
 #Print whether 9 is an element of numbers
 print(9 in numbers)
