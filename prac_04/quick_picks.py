@@ -11,11 +11,10 @@ total_result = []
 for i in range(number_of_picks):
     one_round_result = []
     while len(one_round_result) < NUMBER_OF_RANDOM:
-        number = random.randint(MIN_RANDOM_NUMBER,MAX_RANDOM_NUMBER)
-        if number in one_round_result:
-            pass
-        else:
-            one_round_result.append(random.randint(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER))
+        number = random.randint(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
+        if number not in one_round_result:
+            one_round_result.append(number)
     one_round_result.sort()
     total_result.append(one_round_result)
-[print(*(f"{p:2}" for p in picks))for picks in total_result]
+for picks in total_result:
+    print(*(f"{p:2}" for p in picks))
