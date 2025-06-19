@@ -16,5 +16,5 @@ max_word_length = max((len(word)) for word in texts)
 # print(max_word_length)
 # print(word_to_count)
 print(f"text = {text}")
-for word in word_to_count:
+for word in sorted(word_to_count):
     print(f"{word:{max_word_length}} = {word_to_count[word]}")
