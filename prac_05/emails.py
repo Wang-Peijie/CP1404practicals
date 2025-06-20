@@ -11,14 +11,18 @@ def main():
         name = extract_name(email)
         choice = input(f"Is your name {name}? (Y/n)").upper()
         if choice == "Y" or choice == '':
-            pass
+            key_to_value[name] = email
         else:
             name = input("Name: ")
+            key_to_value[name] = email
         email = input("Email: ")
 
 
 
 def extract_name(string):
     #Extract a username from user email string
+    strings = string.title().split("@")
+    print(strings)
+    return strings[0]
 
 main()
