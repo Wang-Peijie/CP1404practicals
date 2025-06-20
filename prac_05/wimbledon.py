@@ -6,20 +6,30 @@ Actual:
 """
 FILENAME = "wimbledon.csv"
 def main():
+    champion_names = []
+    countrys = []
     wimbledon_data = read_file()
-    print(wimbledon_data)
+    # print(wimbledon_data)
+    for line in wimbledon_data:
+        champion_names.append(line.strip().split(",")[2])
+        countrys.append(line.strip().split(",")[3])
+    # print(champion_names)
+    # print(countrys)
+    countrys = organize_countrys(countrys)
 
-def calculate_total_times(data):
+def calculate_champion_times(data):
     pass
 
 def read_file():
+    #read file lines in to a list
     data = []
     with open(FILENAME, "r", encoding="utf-8-sig") as in_file:
         in_file.readline()
         data = in_file.readlines()
     return data
 
-def store_country(data):
-    pass
-
+def organize_countrys(data):
+    data = set(data)
+    # print(data)
+    return sorted(list(data))
 main()
