@@ -18,7 +18,13 @@ def main():
     # print(countrys)
     countrys = organize_countrys(countrys)
     champion_to_win = {}
-
+    for champion in champion_names:
+        champion_to_win[champion] = calculate_champion_times(champion_names,champion)
+    # print(champion_to_win)
+    print("Wimbledon champion:")
+    [print(f"{name} {number}")for name,number in champion_to_win.items()]
+    print(f"These {len(countrys)} countries have won Wimbledon:")
+    print(",".join(countrys))
 
 
 def calculate_champion_times(datas,name):
