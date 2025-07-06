@@ -18,5 +18,6 @@ def main():
     print(limo.fuel)
     limo.drive(115)
     print(limo.fuel)
+    print(limo)
 
 main()
