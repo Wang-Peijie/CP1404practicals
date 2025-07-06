@@ -8,3 +8,6 @@ guitar2 = Guitar("Another Guitar", 2013, 10000.00)
 
 print(f"{guitar1.name} get_age() - Expected 103. Got {guitar1.get_age(CURRENT_YEAR)}")
 print(f"{guitar2.name} get_age() - Expected 12. Got {guitar2.get_age(CURRENT_YEAR)}")
+
+print(f"{guitar1.name} is_vintage() - Expected True. Got {guitar1.is_vintage(CURRENT_YEAR)}")
+print(f"{guitar2.name} is_vintage() - Expected False. Got {guitar2.is_vintage(CURRENT_YEAR)}")
