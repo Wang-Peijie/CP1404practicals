@@ -1,5 +1,6 @@
 """CP1404/CP5632 Practical - language class."""
 class ProgrammingLanguage:
+    """Represent a ProgrammingLanguage object."""
     def __init__(self, name, typing, reflection, year):
         """Initialise a ProgrammingLanguage instance.
 
