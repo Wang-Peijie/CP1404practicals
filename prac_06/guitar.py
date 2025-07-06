@@ -6,7 +6,7 @@ class Guitar:
         Initialise a guitar instance.
 
         name: string, a name of a guitar
-        year: int
+        year: int, The date this guitar was made
         cost: float
         """
         self.name = name
@@ -16,3 +16,8 @@ class Guitar:
     def __str__(self):
         """Return a string representation of the guitar object."""
         return f"{self.name} ({self.year}) : ${self.cost:,.2f}"
+
+    def get_age(self,year):
+        """returns how old the guitar is in years"""
+        year -= self.year
+        return year
