@@ -28,7 +28,8 @@ def main():
         reflection = parts[2] == "Yes"
         # Construct a ProgrammingLanguage object using the elements
         # year should be an int
-        language = ProgrammingLanguage(parts[0], parts[1], reflection, int(parts[3]))
+        pointer_arithmetic = parts[4] == 'Yes'
+        language = ProgrammingLanguage(parts[0], parts[1], reflection, int(parts[3]), pointer_arithmetic)
         # Add the language we've just constructed to the list
         languages.append(language)
     # Close the file as soon as we've finished reading it
@@ -37,9 +38,6 @@ def main():
     # Loop through and display all languages (using their str method)
     for language in languages:
         print(language)
-
-
-main()
 
 
 def using_csv():
@@ -63,7 +61,7 @@ def using_namedtuple():
     file_field_names = in_file.readline().strip().split(',')
     print(file_field_names)
     # Language will be a new subclass of the tuple data type class
-    Language = namedtuple('Language', 'name, typing, reflection, year')
+    Language = namedtuple('Language', 'name, typing, reflection, year, pointer arithmetic')
     reader = csv.reader(in_file)  # use default dialect, Excel
 
     for row in reader:
@@ -86,3 +84,5 @@ def using_csv_namedtuple():
         print(repr(language))
 
 # using_csv_namedtuple()
+
+main()
