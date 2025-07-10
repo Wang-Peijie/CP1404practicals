@@ -1,7 +1,7 @@
 """CP1404/CP5632 Practical - guitar class."""
 class Guitar:
     """Represent a Guitar object."""
-    def __init__(self, name='', year=0, cost=0.0):
+    def __init__(self, name, year, cost):
         """
         Initialise a guitar instance.
 
@@ -13,7 +13,7 @@ class Guitar:
         self.year = year
         self.cost = cost
 
-    def __str__(self):
+    def __repo__(self):
         """Return a string representation of the guitar object."""
         return f"{self.name} ({self.year}) : ${self.cost:,.2f}"
 
