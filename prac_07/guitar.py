@@ -13,7 +13,7 @@ class Guitar:
         self.year = year
         self.cost = cost
 
-    def __repo__(self):
+    def __repr__(self):
         """Return a string representation of the guitar object."""
         return f"{self.name} ({self.year}) : ${self.cost:,.2f}"
 
@@ -24,3 +24,6 @@ class Guitar:
     def is_vintage(self,current_year):
         """returns True if the guitar is 50 or more years old"""
         return self.get_age(current_year) >= 50
+
+    def __lt__(self, other):
+        return self.year < other.year
