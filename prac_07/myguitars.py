@@ -5,10 +5,12 @@ import csv
 FILENAME = "guitars.csv"
 
 def main():
-    """"""
+    """A program to show user information of guitars and store new data in to a csv file"""
     csv_data = read_file()
     guitars = convert_list_to_objects_list(csv_data)
-    # print(guitars)
+    guitars.sort()
+    for guitar in guitars:
+        print(guitar)
 
 
 def read_file():
@@ -19,7 +21,7 @@ def read_file():
         for line in lines:
             data.append(line)
             # print(line)
-    print(data)
+    # print(data)
     return data
 
 def convert_list_to_objects_list(data):
