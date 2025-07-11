@@ -42,14 +42,24 @@ def main():
             priority = get_valid_input("Priority:",int)
             cost = get_valid_input("Cost estimate: $", float)
             percent = get_valid_input("Percent complete:",int)
+            new_project = Project(name, start_date, priority, cost, percent)
+            adjust_priorities(data,new_project)
+            data.append(new_project)
         elif choice == "U":
-            pass
+            for i, project in enumerate(data,start=1):
+                print(f"{i} {project}")
+            user_choice = get_valid_input("Project choice:", int)
+            print(data[user_choice - 1])
+            new_percent = get_valid_input("New Percentage:", int,blank=True)
+            new_priority = get_valid_input("New Priority:", int,blank=True)
+            data[user_choice - 1].percentage = new_percent
+            data[user_choice - 1].priority = new_priority
         else:
             print("invalid input, try again!")
         choice = input(MENU).upper()
-    choice = input("Would you like to save to projects.txt?").lower()
+    choice = get_valid_input("Would you like to save to projects.txt?", str).lower()
     if "yes" in choice:
-        pass
+
         print("Thank you for using custom-built project management software.")
     else:
         print("Thank you for using custom-built project management software.")
@@ -101,7 +111,7 @@ def get_valid_input(prompt, input_type, blank=False):
         try:
             user_input = input(prompt)
             if blank and user_input == "":
-                return ""
+                return input_type(0)
             elif input_type is str:
                 valid_input = True
             else:
