@@ -7,11 +7,19 @@ class Project:
         """"""
         self.name = name
         self.start_date = start_date
-        self.priorty = priority
+        self.priority = priority
         self.cost = cost
         self.percentage = percentage
 
 
     def __repr__(self):
         """"""
-        return f"{self.name} {self.start_date} {self.priorty} {self.cost} {self.percentage}"
+        return f"{self.name}, start: {self.start_date}, priorty {self.priorty}, estimate: ${self.cost}, completion: {self.percentage}%"
+
+    def __lt__(self, other):
+        """"""
+        return self.priority < other.priorty
+
+    def is_completed(self):
+        """"""
+        return self.percentage == 100
