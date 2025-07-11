@@ -14,11 +14,16 @@ class Project:
 
     def __repr__(self):
         """"""
-        return f"{self.name}, start: {self.start_date}, priorty {self.priorty}, estimate: ${self.cost}, completion: {self.percentage}%"
+        #for test
+        # return f"{self.name} {self.start_date} {self.priority} {self.cost} {self.percentage}%"
+        formatted_date = self.start_date.strftime("%d/%m/%Y")
+        return f"{self.name}, start: {formatted_date}, priorty {self.priority}, estimate: ${self.cost}, completion: {self.percentage}%"
+
 
     def __lt__(self, other):
-        """"""
-        return self.priority < other.priorty
+        """Define < based on priority"""
+        return self.priority < other.priority
+
 
     def is_completed(self):
         """"""
