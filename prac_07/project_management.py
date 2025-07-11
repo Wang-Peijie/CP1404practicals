@@ -3,7 +3,6 @@ CP1404/CP5632 Practical 07 - Project management
 Estimated time:2 hour
 Actual time: 3 hour
 """
-from prac_01.menus import user_name
 from project import Project
 from datetime import datetime
 FILENAME = "projects.txt"
@@ -30,9 +29,9 @@ def main():
             name = input("Enter the project name:").title()
             print("Project saved")
         elif choice == "D":
-            pass
+            display_projects(data)
         elif choice == "F":
-            pass
+            user_date = get_valid_input("Enter a start date:(dd/mm/yyyy)", convert_string_to_date)
         elif choice == "A":
             pass
         elif choice == "U":
@@ -46,6 +45,22 @@ def main():
         print("Thank you for using custom-built project management software.")
     else:
         print("Thank you for using custom-built project management software.")
+
+
+
+def display_projects(data):
+    """Display projects in priority order"""
+    data.sort()
+    print("Incomplete projects:")
+    for project in data:
+        if not project.is_completed():
+            print(project)
+
+    print("Completed projects: ")
+    for project in data:
+        if project.is_completed():
+            print(project)
+
 
 
 def load_file():
@@ -65,7 +80,7 @@ def load_file():
     return data
 
 
-def get_valid_input(prompt, input_type, blank):
+def get_valid_input(prompt, input_type, blank=False):
     """Get valid input from the user"""
     valid_input = False
     user_input = None  # Solve the problem of function error
@@ -82,6 +97,10 @@ def get_valid_input(prompt, input_type, blank):
         except ValueError:
             print("invalid input, try again!")
     return user_input
+
+def convert_string_to_date(string):
+    """Convert a string to a datetime.date"""
+    return datetime.strptime(string,"%d/%m/%Y").date()
 
 main()
 
