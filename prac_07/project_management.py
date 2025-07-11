@@ -14,8 +14,10 @@ MENU = ("- (L)oad projects\n"
         "- (U)pdate project\n"
         "- (Q)uit\n"
         ">>>")
+
+
 def main():
-    """"""
+    """Main program for project management."""
     print("Welcome to Pythonic Project Management")
     data = load_file()
     print(f"Loaded {len(data)} projects from {FILENAME}")
@@ -35,41 +37,48 @@ def main():
             for project in data:
                 if project.start_date >= user_date:
                     print(project)
+
         elif choice == "A":
             print("Let's add a new project")
-            name = get_valid_input("Name:",str)
-            start_date = get_valid_input("Start date (dd/mm/yy):",convert_string_to_date)
-            priority = get_valid_input("Priority:",int)
+            name = get_valid_input("Name:", str)
+            start_date = get_valid_input("Start date (dd/mm/yy):", convert_string_to_date)
+            priority = get_valid_input("Priority:", int)
             cost = get_valid_input("Cost estimate: $", float)
-            percent = get_valid_input("Percent complete:",int)
+            percent = get_valid_input("Percent complete:", int)
             new_project = Project(name, start_date, priority, cost, percent)
-            adjust_priorities(data,new_project)
+            adjust_priorities(data, new_project)
             data.append(new_project)
+
         elif choice == "U":
-            for i, project in enumerate(data,start=1):
+            for i, project in enumerate(data, start=1):
                 print(f"{i} {project}")
             user_choice = get_valid_input("Project choice:", int)
             print(data[user_choice - 1])
-            new_percent = get_valid_input("New Percentage:", int,blank=True)
-            new_priority = get_valid_input("New Priority:", int,blank=True)
+            new_percent = get_valid_input("New Percentage:", int, blank=True)
+            if new_percent == "":
+                data[user_choice - 1].percentage = new_percent
+            new_priority = get_valid_input("New Priority:", int, blank=True)
+            if new_priority == "":
+                data[user_choice - 1].priority = new_priority
             data[user_choice - 1].percentage = new_percent
             data[user_choice - 1].priority = new_priority
+
         else:
             print("invalid input, try again!")
         choice = input(MENU).upper()
+
     choice = get_valid_input("Would you like to save to projects.txt?", str).lower()
     if "yes" in choice:
         save_project(data)
-        print("Thank you for using custom-built project management software.")
-    else:
-        print("Thank you for using custom-built project management software.")
+    print("Thank you for using custom-built project management software.")
 
 
-def adjust_priorities(data,new_project):
+def adjust_priorities(data, new_project):
     """Adjust priorities of projects to move for new project"""
     for project in data:
         if project.priority >= new_project.priority:
             project.priority += 1
+
 
 def display_projects(data):
     """Display projects in priority order"""
@@ -83,7 +92,6 @@ def display_projects(data):
     for project in data:
         if project.is_completed():
             print(project)
-
 
 
 def load_file():
@@ -121,9 +129,11 @@ def get_valid_input(prompt, input_type, blank=False):
             print("invalid input, try again!")
     return user_input
 
+
 def convert_string_to_date(string):
     """Convert a string to a datetime.date"""
-    return datetime.strptime(string,"%d/%m/%Y").date()
+    return datetime.strptime(string, "%d/%m/%Y").date()
+
 
 def save_project(data):
     """Saved projects in FILENAME by formatted string"""
