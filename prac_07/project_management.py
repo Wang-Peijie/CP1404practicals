@@ -3,6 +3,7 @@ CP1404/CP5632 Practical 07 - Project management
 Estimated time:2 hour
 Actual time: 3 hour
 """
+from prac_01.menus import user_name
 from project import Project
 from datetime import datetime
 FILENAME = "projects.txt"
@@ -63,9 +64,11 @@ def load_file():
             data.append(Project(name, time, priority, cost, percentage))
     return data
 
-def get_valid_input(prompt,input_type,blank):
+
+def get_valid_input(prompt, input_type, blank):
     """Get valid input from the user"""
     valid_input = False
+    user_input = None  # Solve the problem of function error
     while not valid_input:
         try:
             user_input = input(prompt)
