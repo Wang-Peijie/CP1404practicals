@@ -59,7 +59,7 @@ def main():
         choice = input(MENU).upper()
     choice = get_valid_input("Would you like to save to projects.txt?", str).lower()
     if "yes" in choice:
-
+        save_project(data)
         print("Thank you for using custom-built project management software.")
     else:
         print("Thank you for using custom-built project management software.")
@@ -68,7 +68,7 @@ def main():
 def adjust_priorities(data,new_project):
     """Adjust priorities of projects to move for new project"""
     for project in data:
-        if project.priority >= new_project:
+        if project.priority >= new_project.priority:
             project.priority += 1
 
 def display_projects(data):
@@ -111,7 +111,7 @@ def get_valid_input(prompt, input_type, blank=False):
         try:
             user_input = input(prompt)
             if blank and user_input == "":
-                return input_type(0)
+                return ""
             elif input_type is str:
                 valid_input = True
             else:
@@ -124,5 +124,12 @@ def get_valid_input(prompt, input_type, blank=False):
 def convert_string_to_date(string):
     """Convert a string to a datetime.date"""
     return datetime.strptime(string,"%d/%m/%Y").date()
+
+def save_project(data):
+    """Saved projects in FILENAME by formatted string"""
+    with open(FILENAME, "w") as out_file:
+        out_file.write(f"Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+        for project in data:
+            out_file.write(project.save_project())
 
 main()
