@@ -63,8 +63,22 @@ def load_file():
             data.append(Project(name, time, priority, cost, percentage))
     return data
 
-
-
+def get_valid_input(prompt,input_type,blank):
+    """Get valid input from the user"""
+    valid_input = False
+    while not valid_input:
+        try:
+            user_input = input(prompt)
+            if blank and user_input == "":
+                return ""
+            elif input_type is str:
+                valid_input = True
+            else:
+                user_input = input_type(user_input)
+                valid_input = True
+        except ValueError:
+            print("invalid input, try again!")
+    return user_input
 
 main()
 
