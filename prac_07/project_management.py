@@ -31,9 +31,17 @@ def main():
         elif choice == "D":
             display_projects(data)
         elif choice == "F":
-            user_date = get_valid_input("Enter a start date:(dd/mm/yyyy)", convert_string_to_date)
+            user_date = get_valid_input("Show projects that start after date(dd/mm/yyyy):", convert_string_to_date)
+            for project in data:
+                if project.start_date >= user_date:
+                    print(project)
         elif choice == "A":
-            pass
+            print("Let's add a new project")
+            name = get_valid_input("Name:",str)
+            start_date = get_valid_input("Start date (dd/mm/yy):",convert_string_to_date)
+            priority = get_valid_input("Priority:",int)
+            cost = get_valid_input("Cost estimate: $", float)
+            percent = get_valid_input("Percent complete:",int)
         elif choice == "U":
             pass
         else:
@@ -47,6 +55,11 @@ def main():
         print("Thank you for using custom-built project management software.")
 
 
+def adjust_priorities(data,new_project):
+    """Adjust priorities of projects to move for new project"""
+    for project in data:
+        if project.priority >= new_project:
+            project.priority += 1
 
 def display_projects(data):
     """Display projects in priority order"""
@@ -103,4 +116,3 @@ def convert_string_to_date(string):
     return datetime.strptime(string,"%d/%m/%Y").date()
 
 main()
-
