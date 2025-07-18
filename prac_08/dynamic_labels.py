@@ -28,6 +28,8 @@ class DynamicWidgetsApp(App):
 
     def create_labels(self):
         """Create labels widgets from the NAMES list """
-
+        for name in self.names:
+            label = Label(text=name)
+            self.root.ids.main.add_widget(label)
 
 DynamicWidgetsApp().run()
