@@ -4,8 +4,9 @@ BoxLayout:
         orientation: 'horizontal'
         TextInput:
             id: input_mile
-            text: ''
+            text: '0'
             font_size: 42
+            on_text: app.handle_calculate()
         BoxLayout:
             orientation: 'vertical'
 #            size_hint_x: 0.25
@@ -15,3 +16,11 @@ BoxLayout:
             Button:
                 text: 'Down'
                 font_size: 46
+    Button:
+        text: 'Convert miles to km'
+        on_press: app.handle_calculate()
+    Label:
+        id: StringProperty
+        font_size: 48
+        text: '0'
+        color: (1, 1, 0, 1)

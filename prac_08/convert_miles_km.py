@@ -20,4 +20,11 @@ class MilesConvertKmApp(App):
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
-MilesConvertKmApp.run()
+    def handle_calculation(self):
+        """ handle calculation get input number for input_mile and convert to string"""
+        value = self.root.ids.input_mile.text
+        result = MILES_TO_KM * value
+        self.root.ids.StringProperty.text = str(result)
+
+
+MilesConvertKmApp().run()
