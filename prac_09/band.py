@@ -14,7 +14,10 @@ class Band:
 
     def __str__(self):
         """Return a format string to show musicians"""
+        musicians_string = ",".join(str(musician) for musician in self.musicians)
+        return f"{self.name} {musicians_string}"
 
     def add(self, musician):
         """Add a musician to the band's list of musicians."""
         self.musicians.append(musician)
+        # print(musician)
