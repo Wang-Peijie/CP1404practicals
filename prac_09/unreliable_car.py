@@ -4,7 +4,7 @@ import random
 
 class UnreliableCar(Car):
     """Specialised version of a Car"""
-    def __init__(self, name, fuel, reliability):
+    def __init__(self, name, fuel, reliability:float):
         """Initialise an Unreliable instance, based on parent class Car."""
         super().__init__(name, fuel)
         self.reliability = reliability
@@ -14,9 +14,8 @@ class UnreliableCar(Car):
     def drive(self, distance):
         """Generate a random number only drive the car if that number is less than the car's reliability"""
         if random.randint(0, 100) < self.reliability:
-            distance_driven = super().drive(distance)
-            self.current_distance += distance_driven
+            return super().drive(distance)
 
     def __str__(self):
         """Return a string like a Car but with current fare distance."""
-        return f"{super().__str__()}, {self.current_distance}km on current fare"
+        return f"{super().__str__()}, reliablity= {self.reliability}%"
